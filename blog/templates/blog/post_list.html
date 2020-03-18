@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Django blog</title>
+</head>
+<body>
+   <script>
+       function set2fig(num) {
+
+           var ret;
+           if (num < 10) {
+               ret = "0" + num;
+           } else { ret = num; }
+           return ret;
+       }
+       function showClock1() {
+           var nowTime = new Date();
+           var nowHour = set2fig(nowTime.getHours());
+           var nowMin = set2fig(nowTime.getMinutes());
+           var nowSec = set2fig(nowTime.getSeconds());
+           var msg = "time is : " + nowHour + ":" + nowMin + ":" + nowSec;
+           document.getElementById("RealtimeClockArea").innerHTML = msg;
+       }
+       setInterval('showClock1()', 1000);
+
+   </script> 
+    
+    <p id="RealtimeClockArea"></p>
+    
+    <div>
+    <h1><a href= "/">Django blog</a></h1>
+</div>   
+    <div>
+        <p>published : <script>var today = new Date();
+            document.write(today.getFullYear() + "年" + (today.getMonth() + 1) + "月" + today.getDate() + "日");</script></p>
+        <h2><a href=" ">First post</a></h2>
+    </div>10
+
+
+    <div><p>公開日 : <script>var today = new Date();</script></p>
+    <h3><a href="">Second post</a></h3>
+    <p>こんにちは！</p>
+    
+    </div>
+  
+    
+    
+    <script>
+    
+       var i = prompt("数字の範囲（ランダム抽出） : ", "");
+       var com = Math.floor(Math.random() * i)
+       if (com % 2 == 0)
+           document.write("結果　: " + com + "<br>" + "当たり！");
+       else
+           document.write("結果 : " + com + "<br>" + "残念、外れです。"); //HTML は　<br>が改行
+   </script>
+
+</body>
+</html>
