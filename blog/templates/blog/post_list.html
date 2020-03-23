@@ -4,6 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <title>Django blog</title>
+
 </head>
 <body>
    <script>
@@ -17,8 +18,8 @@
        }
        function showClock1() {
            var nowTime = new Date();
-           var nowHour = set2fig(nowTime.getHours());
-           var nowMin = set2fig(nowTime.getMinutes());
+           let nowHour = set2fig(nowTime.getHours());
+           let nowMin = set2fig(nowTime.getMinutes());
            var nowSec = set2fig(nowTime.getSeconds());
            var msg = "time is : " + nowHour + ":" + nowMin + ":" + nowSec;
            document.getElementById("RealtimeClockArea").innerHTML = msg;
@@ -36,16 +37,20 @@
         <p>published : <script>var today = new Date();
             document.write(today.getFullYear() + "年" + (today.getMonth() + 1) + "月" + today.getDate() + "日");</script></p>
         <h2><a href=" ">First post</a></h2>
-    </div>10
+    </div>
 
 
-    <div><p>公開日 : <script>var today = new Date();</script></p>
-    <h3><a href="">Second post</a></h3>
-    <p>こんにちは！</p>
-    
+    <div>
+  <h3><a href="/">Django Blog</a></h3>
     </div>
   
-    
+    {%for post in posts %}
+    <div><p>published: {{ post.published_data }}</p>
+    <h4><a href=""> {{post.title}}</a></h4>
+    <p>{{ post.text|linebreaksbr }}</p>
+
+    </div>
+    {% endfor %}
     
     <script>
     
@@ -57,5 +62,6 @@
            document.write("結果 : " + com + "<br>" + "残念、外れです。"); //HTML は　<br>が改行
    </script>
 
+    
 </body>
 </html>
