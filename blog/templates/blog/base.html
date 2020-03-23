@@ -1,5 +1,4 @@
 ﻿<!DOCTYPE html>
-{% extends "blog/base.html" %}
 {% load static %}
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -10,7 +9,18 @@
     <link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="{% static 'css/blog.css' %}">
 </head>
-<body>
+<body class="body">
+    <div class="page-header">
+        <h1><a href="/">Django Girls Blog</a></h1>
+    </div>
+    <div class="content container">
+        <div class="row">
+            <div class="col-md-8">
+                {% block content %}
+                {% endblock %}
+            </div>
+        </div>
+    </div>
     <script>
         function set2fig(num) {
 
@@ -32,42 +42,6 @@
 
     </script>
 
-
-
-    <div class="page-header">
-        <h1><a href="/">Django blog</a></h1>
-    </div>
-
-
-
-
-
-
     <p class="clock" , id="RealtimeClockArea"></p>
-
-    {%block content%}
-    {% for post in posts %}
-    <div class="post">
-        <div class="date">
-            <p>published:{{ post.published_data }}</p>
-        </div>
-        <h4><a href="{% url 'post_detail' pk=post.pk%}">{{ post.title }}</a></h4>
-        <p>{{ post.text|linebreaksbr }}</p>
-    </div>
-    {% endfor %}
-    {%endblock%}
-
-    <p class="result">
-        <script>
-
-            var i = prompt("数字の範囲（ランダム抽出） : ", "");
-            var com = Math.floor(Math.random() * i)
-            if (com % 2 == 0)
-                document.write("結果　: " + com + "<br>" + "当たり！");
-            else
-                document.write("結果 : " + com + "<br>" + "残念、外れです。"); //HTML は　<br>が改行
-        </script>
-    </p>
-
 </body>
 </html>
